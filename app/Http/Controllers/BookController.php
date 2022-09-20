@@ -51,7 +51,7 @@ class BookController extends Controller
     public function store(StoreBookRequest $request)
     {
         $data = $request->validated();
-        // $data['isFavourite'] = $request->isFavourite == 1 ? true : false;
+        // $data['isFavourite'] = $request->isFavourite === true ? 1 : 0;
         $file = $request->file('image');
         $fileName = time().'.png';
         // return $file->getClientOriginalName();
@@ -102,7 +102,8 @@ class BookController extends Controller
     {
         $data = $request->validated();
         // return $data['isFavourite'];
-        // $data['isFavourite'] = $request->isFavourite === 1 ? true : false;
+        // return $data;
+        $data['isFavourite'] = $request->isFavourite === true ? 1 : 0;
 
         if(!$this->bookService->getBook($book)){
             return response()->json([
@@ -121,8 +122,8 @@ class BookController extends Controller
             }
             $destination = 'public/assets/images';
             $filename = time().'.png';
-            Storage::put($destination.'/'.$filename, file_get_contents($file));
-            $data['image'] = $destination.'/'.$filename;
+            $file->storeAs($destination, $filename);
+            $data['image'] = config('app.image_path').$filename;
         }
 
         $updateBook = $this->bookService->updateBook($book, $data);

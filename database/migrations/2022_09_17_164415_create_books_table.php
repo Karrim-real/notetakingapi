@@ -19,7 +19,7 @@ class CreateBooksTable extends Migration
             $table->string('author');
             $table->string('pages');
             $table->string('description');
-            $table->boolean('isFavourite')->default(true);
+            $table->boolean('isFavourite')->default(false);
             $table->longText('image');
             $table->timestamps();
         });
