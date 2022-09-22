@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthUserController;
 use App\Http\Controllers\BookController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
@@ -23,3 +24,21 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('book', BookController::class)->middleware(['cors']);
 
+
+Route::controller(AuthUserController::class)->group(function(){
+
+    Route::prefix('auth')->group(function(){
+        Route::post('/signup', 'create');
+        Route::post('/login', 'show');
+    });
+
+    Route::prefix('users')->group(function(){
+        Route::middleware('auth:sanctum')->group(function(){
+            Route::get('/profile', 'index');
+            Route::post('/updateprofile', 'update');
+            Route::get('/logout', 'destroy');
+        });
+    });
+
+
+});
