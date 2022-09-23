@@ -21,8 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::apiResource('book', BookController::class)->middleware(['cors']);
+Route::middleware(['cors'])->group(function(){
+    Route::apiResource('book', BookController::class);
+});
 
 
 Route::controller(AuthUserController::class)->group(function(){

@@ -14,6 +14,7 @@ class BookController extends Controller
     public function __construct(BookService $bookService)
     {
         $this->bookService = $bookService;
+        $this->middleware('auth:sanctum')->except('show', 'index');
     }
     /**
      * Display a listing of the resource.
