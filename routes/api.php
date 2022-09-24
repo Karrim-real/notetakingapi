@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthUserController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\FavouriteBook;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware(['cors'])->group(function(){
     Route::apiResource('book', BookController::class);
 });
+
+
+    Route::apiResource('favouritebook', FavouriteBook::class);
+
+    Route::controller(FavouriteBook::class)->group(function () {
+        Route::get('/favourite', 'getUserFavouriteBook');
+        Route::delete('/favourite/{book}', 'DeleteFavourite');
+    });
 
 
 Route::controller(AuthUserController::class)->group(function(){

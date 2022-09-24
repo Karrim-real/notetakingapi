@@ -177,6 +177,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\BookServiceProvider::class,
         App\Providers\AuthUserServiceProvider::class,
+        App\Providers\FavouriteBookServiceProvider::class,
 
     ],
 
