@@ -43,6 +43,12 @@ class FavouriteBookService implements FavouriteBookInterface
         return Favouritebook::where('user_id', $userID)->get();
     }
 
+    public function MyFavouriteBooks($userID, $book_id)
+    {
+        return Favouritebook::where('user_id', $userID)->
+        where('book_id', $book_id)->first();
+    }
+
 
 
 }

@@ -54,11 +54,23 @@ class FavouriteBook extends Controller
     public function store(FavouritebookRequest $request)
     {
         $data = $request->validated();
-        $data['user_id'] = Auth::user()->id;
+        // return $data;
+        // $data['user_id'] = Auth::user()->id;
+        $data['user_id'] = 2;
+        if($this->favouriteBookService->MyFavouriteBooks($data['user_id'], $data['book_id'])){
+
+            return response()->json([
+                'status' => 'warning',
+                'statusCode' => 501,
+                'message' => 'Book Already added!'
+            ]);
+        }
+
 
             return response()->json([
                 'status' => 'success',
                 'statusCode' => 200,
+                'message' => 'Book Added',
                 'data' => $this->favouriteBookService->createFavouriteBook($data)
             ], 200);
     }
@@ -144,9 +156,11 @@ class FavouriteBook extends Controller
         ]);
     }
 
+
+
     public function getUserFavouriteBook()
     {
-        $user_id = 9;
+        $user_id = 2;
         // $user_id = Auth::user()->id;
         if($this->favouriteBookService->userFavouriteBooks($user_id))
         {
@@ -158,7 +172,7 @@ class FavouriteBook extends Controller
                 'status' => 'success',
                 'statusCode' => 200,
                 // 'users' => $favouriteBooks->users,
-                'book' => $favouriteBooks,
+                'books' => $favouriteBooks,
             ], 200);
         }
         return response()->json([
@@ -171,7 +185,7 @@ class FavouriteBook extends Controller
 
         public function DeleteFavourite($favouritebook)
         {
-
+            // return $favouritebook;
             if($this->favouriteBookService->getFavouriteBook($favouritebook)){
                return response()->json([
                 'status' => 'sucess',

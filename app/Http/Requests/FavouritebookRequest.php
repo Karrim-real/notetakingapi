@@ -24,7 +24,7 @@ class FavouritebookRequest extends FormRequest
     public function rules()
     {
         return [
-            'book_id'
+            'book_id' => 'required|integer'
         ];
     }
 }
