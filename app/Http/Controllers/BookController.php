@@ -14,7 +14,7 @@ class BookController extends Controller
     public function __construct(BookService $bookService)
     {
         $this->bookService = $bookService;
-        $this->middleware('auth:sanctum')->except('show', 'index');
+        // $this->middleware('auth:sanctum')->except('show', 'index');
     }
     /**
      * Display a listing of the resource.
@@ -52,7 +52,8 @@ class BookController extends Controller
     public function store(StoreBookRequest $request)
     {
         $data = $request->validated();
-        // $data['isFavourite'] = $request->isFavourite === true ? 1 : 0;
+        $data['isFavourite'] = $request->isFavourite == true ? 1 : 0;
+        // return $data;
         $file = $request->file('image');
         $fileName = time().'.png';
         // return $file->getClientOriginalName();

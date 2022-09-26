@@ -184,7 +184,7 @@ class AuthUserController extends Controller
         return response()->json([
             'status' => 'warning',
             'message' => 'You have logged out',
-            'statusCode' => 400,
-        ], 400);
+            'statusCode' => 200,
+        ], 200);
     }
 }
