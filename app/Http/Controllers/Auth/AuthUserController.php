@@ -50,7 +50,7 @@ class AuthUserController extends Controller
                 'status' => 'success',
                 'statusCode' => 200,
                 'message' => 'Register Successffull',
-                'data' => $user,
+                'user' => $user,
                 'authorization' => [
                     'type' => 'Bearer',
                     'token' => $token
@@ -95,7 +95,7 @@ class AuthUserController extends Controller
                         'status' => 'success',
                         'statusCode' => 200,
                         'message' => 'Logined Successfully',
-                        'data' => $user,
+                        'user' => $user,
                         'authorization' => [
                             'type' => 'Bearer',
                             'token' => $token

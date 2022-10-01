@@ -30,8 +30,8 @@ Route::middleware(['cors'])->group(function(){
     Route::apiResource('favouritebook', FavouriteBook::class);
 
     Route::controller(FavouriteBook::class)->group(function () {
-        Route::get('/favourite', 'getUserFavouriteBook');
-        Route::delete('/favourite/{book}', 'DeleteFavourite');
+        Route::get('/favourite', 'getUserFavouriteBook')->middleware('auth:sanctum');
+        Route::delete('/favourite/{book}', 'DeleteFavourite')->middleware('auth:sanctum');
     });
 
 

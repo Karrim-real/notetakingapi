@@ -152,7 +152,7 @@ class FavouriteBook extends Controller
         return response()->json([
             'status' => 'error',
             'statusCode' => 501,
-            'data' => 'No Book Match this ID'
+            'data' => 'No Favourite Book Match this ID'
         ]);
     }
 
