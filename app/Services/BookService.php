@@ -11,7 +11,7 @@ class BookService implements BookInterface
 
     public function getAllBooks()
     {
-        return Book::all();
+        return Book::latest()->get();
     }
 
     public function getBook($book)

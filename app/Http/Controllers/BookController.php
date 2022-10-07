@@ -6,6 +6,8 @@ use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
 use App\Services\BookService;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Ramsey\Uuid\Uuid;
 
 class BookController extends Controller
 {
@@ -81,6 +83,7 @@ class BookController extends Controller
             return response()->json([
                 'status' => 'success',
                 'statusCode' => 200,
+                // 'uuid' => Str::orderedUuid(),
                 'data' => $this->bookService->getBook($book),
             ]);
         }
