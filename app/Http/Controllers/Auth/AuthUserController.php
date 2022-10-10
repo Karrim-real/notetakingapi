@@ -7,7 +7,6 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Services\AuthUserService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthUserController extends Controller
@@ -76,7 +75,8 @@ class AuthUserController extends Controller
         $userDatas = $request->validated();
         // return $userDatas;
         // return $this->authUserService->getUserByEmail($userDatas['email']);
-        if (!$this->authUserService->getUserByEmail($userDatas['email'])) {
+        if (!$this->authUserService->getUserByEmail($userDatas['email']))
+         {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Email Not Found',
@@ -86,7 +86,8 @@ class AuthUserController extends Controller
         }
         $userauth =  $this->authUserService->login($userDatas);
         // return $userauth;
-            if ($userauth) {
+            if ($userauth)
+            {
                 $user = $this->authUserService->getUserByEmail($userDatas['email']);
                 $token = $user->createToken('tokenizer')->plainTextToken;
                 // Auth::login($user);
