@@ -57,12 +57,13 @@ class BookController extends Controller
         $data = $request->validated();
         $data['isFavourite'] = $request->isFavourite == true ? 1 : 0;
         // return $data;
-        $file = $request->file('image');
+        $files = $request->file('image');
+
         $fileName = time().'.png';
         // return $file->getClientOriginalName();
         $destination = 'public/assets/images/';
         // return env('APP_URL');
-        $file->storeAs($destination, $fileName);
+        $files->storeAs($destination, $fileName);
            $data['image'] = config('app.image_path').$fileName;
             return response()->json([
                 'status' => 'success',

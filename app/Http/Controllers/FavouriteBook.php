@@ -55,8 +55,6 @@ class FavouriteBook extends Controller
     {
         $data = $request->validated();
         // return $data;
-        // $data['user_id'] = Auth::user()->id;
-        $data['user_id'] = 2;
         if($this->favouriteBookService->MyFavouriteBooks($data['user_id'], $data['book_id'])){
 
             return response()->json([
@@ -160,8 +158,9 @@ class FavouriteBook extends Controller
 
     public function getUserFavouriteBook()
     {
-        $user_id = 2;
-        // $user_id = Auth::user()->id;
+        // $user_id = 2;
+        $user_id = Auth::user()->id;
+        // return response()->json($user_id);
         if($this->favouriteBookService->userFavouriteBooks($user_id))
         {
             $favouriteBooks = $this->favouriteBookService->userFavouriteBooks($user_id);
