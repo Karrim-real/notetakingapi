@@ -28,6 +28,11 @@ class AuthUserService implements AuthUserInterface
         return User::where('email', $userEmail)->first();
     }
 
+    public function getUserByUsername($username)
+    {
+        return User::where('username', $username)->first();
+    }
+
     public function createUser(array $UsersDetails)
     {
         return User::create($UsersDetails);

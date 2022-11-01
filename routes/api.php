@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Auth\AuthUserController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavouriteBook;
+use App\Http\Controllers\MessageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -50,5 +52,11 @@ Route::controller(AuthUserController::class)->group(function(){
         });
     });
 
-
 });
+
+Route::middleware('auth:sanctum')->group(function(){
+    Route::apiResource('message', MessageController::class);
+    Route::apiResource('comment', CommentController::class);
+});
+
+

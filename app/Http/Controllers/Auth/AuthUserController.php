@@ -32,10 +32,10 @@ class AuthUserController extends Controller
         $userDatas = $request->validated();
         //Check If user Already Exists
         // return $userDatas['email'];
-        if ($this->authUserService->getUserByEmail($userDatas['email'])) {
+        if ($this->authUserService->getUserByEmail($userDatas['email']) || $this->authUserService->getUserByUsername($userDatas['username'])) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Email Already Exists',
+                'message' => 'Email or username Already Exists',
                 'statusCode' => 502,
             ], 502);
         }

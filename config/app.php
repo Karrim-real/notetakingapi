@@ -178,6 +178,7 @@ return [
         App\Providers\BookServiceProvider::class,
         App\Providers\AuthUserServiceProvider::class,
         App\Providers\FavouriteBookServiceProvider::class,
+        App\Providers\MessageServiceProvider::class,
 
     ],
 
