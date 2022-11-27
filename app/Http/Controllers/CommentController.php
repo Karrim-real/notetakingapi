@@ -9,8 +9,19 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
+    /**
+     * commentService
+     *
+     * @var mixed
+     */
     protected $commentService;
 
+    /**
+     * __construct
+     *
+     * @param  mixed $comment
+     * @return void
+     */
     public function __construct(CommentService $comment)
     {
         $this->commentService = $comment;

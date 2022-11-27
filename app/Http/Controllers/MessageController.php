@@ -8,10 +8,24 @@ use App\Services\MessageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * MessageController
+ */
 class MessageController extends Controller
 {
+    /**
+     * messageService
+     *
+     * @var mixed
+     */
     protected $messageService;
 
+    /**
+     * __construct
+     *
+     * @param  mixed $message
+     * @return void
+     */
     public function __construct(MessageService $message)
     {
         $this->messageService = $message;
@@ -148,6 +162,11 @@ class MessageController extends Controller
 
 
 
+    /**
+     * getUsermessage
+     *
+     * @return void
+     */
     public function getUsermessage()
     {
         // $user_id = 2;

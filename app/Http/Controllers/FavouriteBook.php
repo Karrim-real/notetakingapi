@@ -7,11 +7,25 @@ use App\Services\FavouriteBookService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * FavouriteBook
+ */
 class FavouriteBook extends Controller
 {
 
+    /**
+     * favouriteBookService
+     *
+     * @var mixed
+     */
     protected $favouriteBookService;
 
+    /**
+     * __construct
+     *
+     * @param  mixed $favouriteBook
+     * @return void
+     */
     public function __construct(FavouriteBookService $favouriteBook)
     {
         $this->favouriteBookService = $favouriteBook;
@@ -156,6 +170,11 @@ class FavouriteBook extends Controller
 
 
 
+    /**
+     * getUserFavouriteBook
+     *
+     * @return void
+     */
     public function getUserFavouriteBook()
     {
         // $user_id = 2;
@@ -182,6 +201,12 @@ class FavouriteBook extends Controller
 
         }
 
+        /**
+         * DeleteFavourite
+         *
+         * @param  mixed $favouritebook
+         * @return void
+         */
         public function DeleteFavourite($favouritebook)
         {
             // return $favouritebook;

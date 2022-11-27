@@ -9,10 +9,24 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
 
+/**
+ * BookController
+ */
 class BookController extends Controller
 {
+    /**
+     * bookService
+     *
+     * @var mixed
+     */
     protected $bookService;
 
+    /**
+     * __construct
+     *
+     * @param  mixed $bookService
+     * @return void
+     */
     public function __construct(BookService $bookService)
     {
         $this->bookService = $bookService;
