@@ -46,6 +46,7 @@ class BookController extends Controller
             return response()->json([
                 'status' => 'success',
                 'statusCode' => 200,
+                'message' => 'Update By Remote',
                 'data' => $this->bookService->getAllBooks(),
             ], 200);
         }
